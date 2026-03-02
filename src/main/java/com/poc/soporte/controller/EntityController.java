@@ -2,6 +2,8 @@ package com.poc.soporte.controller;
 
 import com.poc.soporte.entity.Entity;
 import com.poc.soporte.service.EntityService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/entities")
+@Tag(name = "Entities", description = "Endpoints para consultar entidades")
 public class EntityController {
 
     private final EntityService entityService;
@@ -20,6 +23,7 @@ public class EntityController {
     }
 
     @GetMapping
+    @Operation(summary = "Listar entidades", description = "Devuelve todas las entidades disponibles")
     public ResponseEntity<List<Entity>> findAll() {
         return ResponseEntity.ok(entityService.findAll());
     }
