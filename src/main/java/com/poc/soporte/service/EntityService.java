@@ -2,11 +2,10 @@ package com.poc.soporte.service;
 
 import com.poc.soporte.entity.Entity;
 import com.poc.soporte.repository.EntityRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntityService {
@@ -21,11 +20,7 @@ public class EntityService {
         return entityRepository.findAll();
     }
 
-    public Entity findById(Long id) {
-        return entityRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "Entidad no encontrada con id: " + id
-                ));
+    public Optional<Entity> findById(Long id) {
+        return entityRepository.findById(id);
     }
 }
