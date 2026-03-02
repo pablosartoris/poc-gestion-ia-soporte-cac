@@ -5,6 +5,7 @@ import com.poc.soporte.repository.EntityRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntityService {
@@ -17,5 +18,9 @@ public class EntityService {
 
     public List<Entity> findAll() {
         return entityRepository.findAll();
+    }
+
+    public Optional<Entity> findById(Long id) {
+        return entityRepository.findById(id);
     }
 }
